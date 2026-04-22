@@ -3,10 +3,10 @@ require('dotenv').config();
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
-if (!MONGODB_URI) {
-  console.error('ERROR: MONGODB_URI is not defined in .env file');
-  process.exit(1);
-}
+// if (!MONGODB_URI) {
+//   console.error('ERROR: MONGODB_URI is not defined in .env file');
+//   process.exit(1);
+// }
 
 mongoose.connect(MONGODB_URI)
   .then(() => {
