@@ -4,20 +4,18 @@ require('dotenv').config();
 require('./connection');
 
 const app = express();
+const PORT = process.env.PORT ? parseInt(process.env.PORT) : 5000;
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
+// Routes
 app.get('/', (req, res) => {
   res.json({ message: 'Server is working' });
 });
 
-// For local development
-if (process.env.NODE_ENV !== 'production') {
-  const PORT = process.env.PORT ? parseInt(process.env.PORT) : 5000;
-  app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-  });
-}
-
-module.exports = app;
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
